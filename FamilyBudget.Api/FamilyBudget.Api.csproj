@@ -10,12 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.7" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
+    <ProjectReference Include="..\FamilyBudget.DataAccess\FamilyBudget.DataAccess.csproj" />
+    <ProjectReference Include="..\FamilyBudget.Services\FamilyBudget.Services.csproj" />
   </ItemGroup>
 
 </Project>

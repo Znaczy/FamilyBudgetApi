@@ -1,3 +1,6 @@
+using FamilyBudget.DataAccess.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace FamilyBudget.Api
 {
     public class Program
@@ -9,6 +12,9 @@ namespace FamilyBudget.Api
             // Add services to the container.
 
             builder.Services.AddControllers();
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+                ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            builder.Services.AddDbContext<FamilyBudgetDbContext>(options => options.UseSqlServer(connectionString));
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
