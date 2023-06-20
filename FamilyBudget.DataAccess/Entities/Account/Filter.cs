@@ -1,8 +1,8 @@
 ﻿namespace FamilyBudget.DataAccess.Entities.Account
 {
-    public enum Filter
+    public enum TransactionType
     {
-        onlyExpanses,
-        onlyIncomes
+        Incomes,
+        Expanses        
     }
 }
