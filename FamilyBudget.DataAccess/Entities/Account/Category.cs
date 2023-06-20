@@ -3,7 +3,7 @@
     public enum Category
     {
         Food,
-        Car,
+        Rent,
         Vacation
     }
 }

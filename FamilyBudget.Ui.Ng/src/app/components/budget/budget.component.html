@@ -1,0 +1,16 @@
+<button (click)="createNewBudget()">Create new budget</button>
+
+<table>
+  <thead>
+    <th>Amount</th>
+    <th>Categories</th>
+
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ budget?.amount }}</td>
+      <td>{{ budget?.categories }}</td>
+
+    </tr>
+  </tbody>
+</table>
