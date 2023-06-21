@@ -1,6 +1,6 @@
 export class User{
     id?: number;
-    userName = "";
+    name = "";
     password = "";
     email = "";
     budgets = [];

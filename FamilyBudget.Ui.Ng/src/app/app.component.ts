@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from './models/user';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,20 @@ import { User } from './models/user';
 })
 export class AppComponent {
   title = 'FamilyBudget.Ui.Ng';
-  user?: User
+  user?: User;
+  // @Input() user?: User;
 
-  initNewUser(){
+  // private url = "User";
+  
+
+  constructor(private http: HttpClient) { }
+
+  public initNewUser(){
     this.user = new User();
   }
+
+  // public updateUser(user: User): Observable<User[]>{
+  //   this.user = new User();
+  // }
 }
+ 

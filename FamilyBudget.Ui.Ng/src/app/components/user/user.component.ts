@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Budget } from 'src/app/models/budget'
+import { User } from 'src/app/models/user'
+
 
 @Component({
   selector: 'app-user',
@@ -7,6 +9,7 @@ import { Budget } from 'src/app/models/budget'
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
+  user?: User;
   budget: Budget[] = [];
 
   constructor(){}
@@ -16,5 +19,13 @@ export class UserComponent {
     console.log('from user oninit');
     console.log();
 
+  }
+
+  registerNewUser() : User {
+    let user = new User();
+    user.email = 'x@wp.pl';
+    user.name = 'Jan';
+    user.password = '1234';
+    return user;
   }
 }

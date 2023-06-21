@@ -1,4 +1,5 @@
 ﻿using FamilyBudget.Api.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FamilyBudget.Api.Controllers
@@ -9,27 +10,17 @@ namespace FamilyBudget.Api.Controllers
     {
         public UserController() { }
 
-        [HttpGet]
-        public async Task<ActionResult<UserDto>> GetUserAsync(int id)
+        [HttpGet("admin")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Test1(int id)
         {
+            
             return Ok();
         }
 
-        [HttpPost]
-        public async Task<ActionResult<RegisterUserDto>> RegisterUserAsync(RegisterUserDto user)
-        {
-            return Ok();
-        }
-
-        [HttpPut]
-        public async Task<ActionResult<RegisterUserDto>> UpdateUserAsync(UpdateUserDto user)
-        {
-
-            return Ok();
-        }
-
-        [HttpDelete]
-        public async Task<ActionResult<RegisterUserDto>> DeleteUserAsync(int id)
+        [HttpGet("appuser")]
+        [Authorize(Roles = "AppUser")]
+        public IActionResult Test2(int id)
         {
 
             return Ok();

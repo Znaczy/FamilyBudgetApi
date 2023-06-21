@@ -10,7 +10,6 @@ export class BudgetService {
 
   public getBudgets() : Budget[] {
     let budget = new Budget()
-    budget.amount = 200;
 
   return [budget];
   }

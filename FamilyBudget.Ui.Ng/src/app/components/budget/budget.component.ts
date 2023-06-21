@@ -15,7 +15,6 @@ export class BudgetComponent {
 
   createNewBudget() : Budget {
     let budget = new Budget()
-    budget.amount = 3000;
     return budget;
   }
 

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using FamilyBudget.Services.Services;
 using FamilyBudget.DataAccess.Entities.Account;
 using Microsoft.OpenApi.Models;
+using FamilyBudget.DataAccess.Repositories;
 
 namespace FamilyBudget.Api
 {
@@ -16,6 +17,7 @@ namespace FamilyBudget.Api
 
             // Add services to the container.
             builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddScoped<IBudgetRepository, BudgetRepository>();
 
             builder.Services.AddControllers();
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
@@ -38,8 +40,8 @@ namespace FamilyBudget.Api
                         Scheme = "Bearer"
                     });
                     option.AddSecurityRequirement(new OpenApiSecurityRequirement
-            {
-                {
+                    {
+                    {
                     new OpenApiSecurityScheme
                     {
                         Reference = new OpenApiReference
@@ -49,25 +51,25 @@ namespace FamilyBudget.Api
                         }
                     },
                     new string[]{}
-                }
-            });
+                    }
+                    });
                 });
 
             builder.Services.AddJwtAuthentication(builder.Configuration);
 
             builder.Services
                 .AddIdentityCore<User>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = false;
-                options.User.RequireUniqueEmail = true;
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 8;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
-            })
-            .AddRoles<IdentityRole<int>>()
-            .AddEntityFrameworkStores<FamilyBudgetDbContext>();
+                {
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.User.RequireUniqueEmail = true;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = 8;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
+                })
+                .AddRoles<IdentityRole<int>>()
+                .AddEntityFrameworkStores<FamilyBudgetDbContext>();
 
             var app = builder.Build();
 
